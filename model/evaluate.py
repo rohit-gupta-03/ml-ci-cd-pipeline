@@ -18,7 +18,7 @@ model= joblib.load('model/iris_model.pkl')
 
 #make the predications
 
-y_pred= predict(X_test)
+y_pred= model.predict(X_test)
 
 
 #Eval
