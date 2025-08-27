@@ -3,7 +3,7 @@ import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
-%matplotlib inline
+
 import warnings
 warnings.filterwarnings('ignore')
 
