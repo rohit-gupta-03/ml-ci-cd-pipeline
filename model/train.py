@@ -21,5 +21,6 @@ model= RandomForestClassifier(n_estimators=100,random_state=42)
 model.fit(X_train,y_train)
 
 #save the model
+import joblib
 
 joblib.dump(model, 'model/iris_model.pkl')
