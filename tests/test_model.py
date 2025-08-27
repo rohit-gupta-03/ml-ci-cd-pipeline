@@ -9,4 +9,4 @@ class TestModelTraining(unittest.TestCase):
         self.assertGreaterEqual(len(model.feature_importances_), 4)
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main()	
