@@ -1,6 +1,6 @@
-pandas 
+flask
 scikit-learn
-joblib
-flask 
-Gunicorn 
+pandas
 numpy
+gunicorn
+joblib

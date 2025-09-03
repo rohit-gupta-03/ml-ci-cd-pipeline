@@ -14,12 +14,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v1
+      uses: actions/checkout@v2
 
     - name: Set up Python
-      uses: actions/setup-python@v1
+      uses: actions/setup-python@v2
       with:
-        python-version: '3.13.7'
+        python-version: '3.8'
 
     - name: Install dependencies
       run: |
@@ -34,12 +34,18 @@ jobs:
       run: |
         python model/evaluate.py
 
-    - name: Run unit tests
-      run: python -m unittest discover -s tests
-
-    - name: Deploy for Render
+    - name: Run Unit Tests
       run: |
-        curl -X POST "https://api.render.com/v1/services/${{secrets.RENDER_SERVICE_ID}}/deploys" \
+        python -m unittest discover -s tests
+
+    - name: Deploy to Render
+      run: |
+        curl -X POST "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys" \
         -H "Accept: application/json" \
-        -H "Authorization: Bearer ${{secrets.RENDER_API_KEY}}"
-        
+        -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}"
+
+
+
+ 
+
+

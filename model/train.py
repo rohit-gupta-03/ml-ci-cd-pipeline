@@ -1,26 +1,25 @@
-import numpy as np
 import pandas as pd
-from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-
-import warnings
-warnings.filterwarnings('ignore')
-
-#Load dataset
-data=pd.read_csv('data/iris.csv')
-
-#preprocess the data 
-X=data.drop('species', axis=1)
-y=data['species']
-
-#split the data 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
-
-#Train the model
-model= RandomForestClassifier(n_estimators=100,random_state=42)
-model.fit(X_train,y_train)
-
-#save the model
+from sklearn.ensemble import RandomForestClassifier
 import joblib
+import os
 
-joblib.dump(model, 'model/iris_model.pkl')
+BASE_DIR = os.path.dirname(os.path.dirname(__file__))  # go one level up
+data_path = os.path.join(BASE_DIR, 'data', 'iris.csv')
+
+# Load the dataset
+data = pd.read_csv(data_path)
+
+# Preprocess the dataset
+X = data.drop('species', axis=1)
+y = data['species']
+
+# Split the data into training and test sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Train a RandomForest model
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(X_train, y_train)
+
+# Save the model
+joblib.dump(model, 'iris_model.pkl')
