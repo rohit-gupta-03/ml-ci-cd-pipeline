@@ -9,7 +9,7 @@ from flask import Flask, request, jsonify
 MODEL_PATH = os.getenv("MODEL_PATH", "model/iris_model.pkl")  # adjust filename if needed
 
 # --- App ---
-app = Flask(__name__)
+app = Flask(__name__)
 
 # Load once at startup
 try:
